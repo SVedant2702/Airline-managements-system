@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="library_interface.css">
+</head>
+
+<body>
+    <header style="height: 13vh;">
+        <div class="top-right-symbol"><img src="jscoe logo.jpeg" alt="" height="100px"></div>
+        <nav>
+            <div class="logo">JSCOE LIBRARY</div>
+            <ul>
+                <div class="login-container">
+                    <div class="dropdown">
+                        <button class="login-button">LOGIN</button>
+                        <div class="dropdown-content">
+                            <a href="login.html">LIBRARY</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="sign-up-container">
+                    <button class="sign-up-button" onclick="window.location.href = 'register.html'">Sign Up</button>
+                </div> -->
+            </ul>
+        </nav>
+    </header>
+
+       <main>
+        <h2>Department-wise Table</h2>
+    
+        <label for="departmentSelect" style="padding: 0 0 0 43vw;">Select Department: </label>
+        <select id="departmentSelect">
+            <option value="all">All</option>
+            <option value="IT">IT</option>
+            <option value="CS">CS</option>
+            <option value="MECH">MECH</option>
+            <option value="ENTC">ENTC</option>
+            <option value="ELEC">ELEC</option>
+        </select>
+    
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>ID No</th>
+                    <th>Full Name</th>
+                    <th>Department</th>
+                    <th>In Time</th>
+                    <th>Out Time</th>
+                    <th>Total Hours</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1001</td>
+                    <td>John Doe</td>
+                    <td>IT</td>
+                    <td>08:00 AM</td>
+                    <td>05:00 PM</td>
+                    <td>9 hours</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2001</td>
+                    <td>Jonny Doe</td>
+                    <td>CS</td>
+                    <td>06:00 AM</td>
+                    <td>09:00 PM</td>
+                    <td>9 hours</td>
+                </tr>
+                <!-- Add more rows with data here -->
+            </tbody>
+        </table>
+<script src="library.js">
+</script>
+       </main>
+    <footer>
+        <div class="copyright">© 2023 Library Access System</div>
+        <div class "contact-info">
+            <p>Contact Number: 123-456-7890</p>
+            <p>Helpline: support@librarymanagement.com</p>
+        </div>
+    </footer>
+    <script src="login.js"></script>
+</body>
+
+</html>

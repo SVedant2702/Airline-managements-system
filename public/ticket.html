@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .ticket {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Tickets</h2>
+
+    <!-- Dynamically generated tickets will go here -->
+
+    <button onclick="downloadTickets()">Download Tickets</button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var urlParams = new URLSearchParams(window.location.search);
+        var seats = urlParams.get('seats');
+        var passengers = JSON.parse(decodeURIComponent(urlParams.get('passengers')));
+
+        var ticketsContainer = document.querySelector('.container');
+
+        // Retrieve additional flight details from available_flight.html
+        var flightDetails = getFlightDetails(); // Replace this with your actual function
+
+        // Generate tickets based on the number of seats and passenger information
+        for (var i = 0; i < seats; i++) {
+            var ticket = document.createElement('div');
+            ticket.classList.add('ticket');
+
+            // Consolidate all passenger and flight information in a single ticket
+            ticket.innerHTML = `
+                <label>Passenger ${i + 1} Ticket:</label>
+                <p><strong>Name:</strong> ${passengers[i].name}</p>
+                <p><strong>Gender:</strong> ${passengers[i].gender}</p>
+                <p><strong>Contact Number:</strong> ${passengers[i].contactNumber}</p>
+                <p><strong>Age:</strong> ${passengers[i].age}</p>
+                <p><strong>Email:</strong> ${passengers[i].email}</p>
+                <p><strong>Flight Details:</strong> ${flightDetails}</p>
+            `;
+
+            ticketsContainer.appendChild(ticket);
+        }
+    });
+
+    function downloadTickets() {
+        // Create a Blob containing the ticket information
+        var ticketsBlob = new Blob([document.querySelector('.container').innerHTML], { type: 'text/html' });
+
+        // Create a link element and trigger a click to download the Blob
+        var link = document.createElement('a');
+        link.href = URL.createObjectURL(ticketsBlob);
+        link.download = 'tickets.html';
+        link.click();
+    }
+
+    function getFlightDetails() {
+        // Replace this function with actual code to retrieve flight details
+        // For demonstration, I'm using a placeholder string
+        return "Flight details: ABC Airlines, Flight Number: XYZ123, Departure Time: 10:00 AM";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+  }
+.top-right-symbol{
+    height: 100px;
+}
+  .top-right-symbol {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+}
+  /* Basic styling for the header and navigation bar */
+  header {
+    background-color: #0074a2;
+    color: #fff;
+    padding: 10px 0;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1326px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+  }
+  
+  .logo {
+    font-size: 48px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  nav li {
+    margin: 0 10px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  /* Dropdown menu styling */
+  .login-container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .login-button {
+    background-color: #0074a2;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  h2{
+    padding: 0 0 0 42vw;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  /* Show the dropdown content on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Add this CSS code to your "login.css" or create a new CSS file for styling */
+  .sign-up-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 20px 3px;
+    cursor: pointer;
+    border-radius: 26px;
+  }
+  
+  .sign-up-button:hover {
+    background-color: #45a049;
+  }
+  
+  
+  /* Style for the "Features" section */
+  .features {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+  }
+  main{
+    height: 80vh;
+  }
+  /* Style for the footer */
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+  }
+  
+  footer .copyright, footer .contact-info {
+    text-align: center;
+  }
+  
+  .contact-info p {
+    margin: 5px 0;
+  }
+  table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+}

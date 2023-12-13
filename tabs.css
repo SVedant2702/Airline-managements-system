@@ -1,0 +1,71 @@
+/* Styles for the welcome container */
+.welcome-container {
+    text-align: center;
+    background-color: #0074a2;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  h2 {
+    font-size: 44px;
+  }
+  
+  /* Styles for the navigation bar */
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background-color: #0074a2;
+    padding: 10px 0;
+  }
+  
+  nav li {
+    margin: 0 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  /* Dropdown menu styling */
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Style for the Log Out button */
+  .logout-button a {
+    background-color: #ff3333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .logout-button a:hover {
+    background-color: #dd0000;
+  }
+  

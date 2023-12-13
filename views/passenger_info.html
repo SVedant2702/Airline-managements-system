@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        .passenger-block {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select,
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Passenger Information</h2>
+
+    <form id="passengerInfoForm">
+        <div id="passengerDetails"></div>
+
+        <button type="button" onclick="submitPassengerInfo()">Submit</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the number of seats from the query parameters
+            var urlParams = new URLSearchParams(window.location.search);
+            var seats = urlParams.get('seats');
+
+            // Generate passenger detail blocks based on the number of seats
+            var passengerDetailsContainer = document.getElementById('passengerDetails');
+            for (var i = 1; i <= seats; i++) {
+                passengerDetailsContainer.innerHTML += `
+                    <div class="passenger-block">
+                        <h3>Passenger ${i} Details</h3>
+                        <label for="passengerName${i}">Passenger Name:</label>
+                        <input type="text" id="passengerName${i}" name="passengerName${i}" required>
+
+                        <label for="gender${i}">Gender:</label>
+                        <select id="gender${i}" name="gender${i}" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+
+                        <label for="contactNumber${i}">Contact Number:</label>
+                        <input type="tel" id="contactNumber${i}" name="contactNumber${i}" pattern="[0-9]{10}" required>
+
+                        <label for="age${i}">Age:</label>
+                        <input type="number" id="age${i}" name="age${i}" min="1" required>
+
+                        <label for="email${i}">Email Id:</label>
+                        <input type="email" id="email${i}" name="email${i}" required>
+                    </div>
+                `;
+            }
+        });
+
+        function submitPassengerInfo() {
+            // Add your code to handle the submission of passenger information
+            // You can retrieve the values from the form and perform further actions.
+
+            // For demonstration, let's assume the submission is successful and redirect to ticket.html
+            window.location.href = 'ticket.html?seats=' + seats;
+        }
+    </script>
+    <script>
+        function submitPassengerInfo() {
+            // Retrieve the values from the form
+            var urlParams = new URLSearchParams(window.location.search);
+            var seats = urlParams.get('seats');
+    
+            // Create an array to store passenger information
+            var passengers = [];
+            for (var i = 1; i <= seats; i++) {
+                var passenger = {
+                    name: document.getElementById('passengerName' + i).value,
+                    gender: document.getElementById('gender' + i).value,
+                    contactNumber: document.getElementById('contactNumber' + i).value,
+                    age: document.getElementById('age' + i).value,
+                    email: document.getElementById('email' + i).value,
+                };
+                passengers.push(passenger);
+            }
+    
+            // Redirect to ticket.html with passenger information
+            window.location.href = `ticket.html?seats=${seats}&passengers=${encodeURIComponent(JSON.stringify(passengers))}`;
+        }
+    </script>
+    
+</div>
+
+</body>
+</html>

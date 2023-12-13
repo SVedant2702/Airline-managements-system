@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Flights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        select,
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .flight-list {
+            margin-top: 20px;
+        }
+
+        .flight-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .flight-info h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Available Flights</h2>
+
+    <!-- You can use JavaScript to dynamically generate options based on the selected departure and destination -->
+    <label for="departure">Departure City:</label>
+    <select id="departure" name="departure" disabled>
+        <!-- Dynamically generated options will go here -->
+    </select>
+
+    <label for="destination">Destination City:</label>
+    <select id="destination" name="destination" disabled>
+        <!-- Dynamically generated options will go here -->
+    </select>
+
+    <div class="flight-list">
+        <!-- Dynamically generated flight options will go here -->
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var queryParams = new URLSearchParams(window.location.search);
+        var departureCity = queryParams.get('departure');
+        var destinationCity = queryParams.get('destination');
+        var seats = queryParams.get('seats'); // Retrieve selected seats
+
+        var departureDropdown = document.getElementById('departure');
+        var destinationDropdown = document.getElementById('destination');
+        departureDropdown.innerHTML = `<option value="${departureCity}" selected>${departureCity}</option>`;
+        destinationDropdown.innerHTML = `<option value="${destinationCity}" selected>${destinationCity}</option>`;
+
+        var departureCities = ['Pune', 'Banglore', 'Mumbai', 'Delhi'];
+        var destinationCities = ['Pune', 'Banglore', 'Mumbai', 'Delhi'];
+
+        var flightList = document.querySelector('.flight-list');
+
+        departureCities.forEach(function (departure) {
+            destinationCities.forEach(function (destination) {
+                if (departure !== destination && departure === departureCity && destination === destinationCity) {
+                    generateFlightItem(`${departure} to ${destination}`, departure, destination, 'Economy', seats, '2023-11-30', 200, '08:00 AM');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
